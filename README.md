@@ -19,6 +19,8 @@ let ikm = Data(bytes: try! Random.generate(byteCount: 16))
 let okm = deriveKey(algorithm: .sha256, seed: ikm, count: 32)
 ```
 
+More information can be found in the [documentation](http://boukehaarsma.nl/HKDF).
+
 ## References:
 
 * [RFC 5869 - HMAC-based Extract-and-Expand Key Derivation Function (HKDF)][0]
