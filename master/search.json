@@ -1,0 +1,1 @@
+{"Functions.html#/s:F4HKDF9deriveKeyFT9algorithmOC7Cryptor4HMAC9Algorithm4seedV10Foundation4Data4infoGSqS4__4saltGSqS4__5countSi_S4_":{"name":"deriveKey(algorithm:seed:info:salt:count:)","abstract":"<p>Derive strong key material from the given (weak) input key material.</p>"},"Functions.html":{"name":"Functions","abstract":"The following functions are available globally."}}

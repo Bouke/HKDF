@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HKDF  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="HKDF  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          HKDF Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/Bouke/HKDF">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://http%3A%2F%2Fboukehaarsma%2Enl%2FHKDF%2FHKDF%2Exml">
+            <img class="header-icon" src="img/dash.png"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">HKDF Reference</a>
+      <img class="carat" src="img/carat.png" />
+      HKDF  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Functions.html#/s:F4HKDF9deriveKeyFT9algorithmOC7Cryptor4HMAC9Algorithm4seedV10Foundation4Data4infoGSqS4__4saltGSqS4__5countSi_S4_">deriveKey(algorithm:seed:info:salt:count:)</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            
+            <a href='#hkdf-in-swift' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='hkdf-in-swift'>HKDF in Swift</h1>
+
+<p>HKDF is an HMAC based key derivation function that transforms any weak key 
+material into cryptographically strong key material. It can be used, for 
+example, to convert a session key derived in a secure remote password 
+authentication into key material suitable for use in encryption, integrity
+checking or authentication.</p>
+
+<p><a href="https://travis-ci.org/Bouke/HKDF"><img src="https://travis-ci.org/Bouke/HKDF.svg?branch=master" alt="Build Status"></a></p>
+<a href='#usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='usage'>Usage:</h2>
+<pre class="highlight swift"><code><span class="c1">// Input Key Material (ikm): weak input key material.</span>
+<span class="k">let</span> <span class="nv">ikm</span> <span class="o">=</span> <span class="kt">Data</span><span class="p">(</span><span class="nv">bytes</span><span class="p">:</span> <span class="k">try!</span> <span class="kt">Random</span><span class="o">.</span><span class="nf">generate</span><span class="p">(</span><span class="nv">byteCount</span><span class="p">:</span> <span class="mi">16</span><span class="p">))</span>
+
+<span class="c1">// Output Key Material (okm): strong key material.</span>
+<span class="k">let</span> <span class="nv">okm</span> <span class="o">=</span> <span class="nf">deriveKey</span><span class="p">(</span><span class="nv">algorithm</span><span class="p">:</span> <span class="o">.</span><span class="n">sha256</span><span class="p">,</span> <span class="nv">seed</span><span class="p">:</span> <span class="n">ikm</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="mi">32</span><span class="p">)</span>
+</code></pre>
+<a href='#references' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='references'>References:</h2>
+
+<ul>
+<li><a href="https://tools.ietf.org/html/rfc5869">RFC 5869 - HMAC-based Extract-and-Expand Key Derivation Function (HKDF)</a></li>
+</ul>
+<a href='#credits' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='credits'>Credits</h2>
+
+<p>This library was written by <a href="https://twitter.com/BoukeHaarsma">Bouke Haarsma</a>.</p>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2017 <a class="link" href="https://twitter.com/BoukeHaarsma" target="_blank" rel="external">Bouke Haarsma</a>. All rights reserved. (Last updated: 2017-03-08)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
