@@ -9,11 +9,13 @@ checking or authentication.
 
 ## Usage:
 
-    // Input Key Material (ikm): weak input key material.
-    let ikm = Data(bytes: try! Random.generate(byteCount: 16))
+```swift
+// Input Key Material (ikm): weak input key material.
+let ikm = Data(bytes: try! Random.generate(byteCount: 16))
 
-    // Output Key Material (okm): strong key material.
-    let okm = deriveKey(algorithm: .sha256, seed: ikm, count: 32)
+// Output Key Material (okm): strong key material.
+let okm = deriveKey(algorithm: .sha256, seed: ikm, count: 32)
+```
 
 ## References:
 
