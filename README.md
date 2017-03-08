@@ -7,6 +7,8 @@ example, to convert a session key derived in a secure remote password
 authentication into key material suitable for use in encryption, integrity
 checking or authentication.
 
+[![Build Status](https://travis-ci.org/Bouke/HKDF.svg?branch=master)](https://travis-ci.org/Bouke/HKDF)
+
 ## Usage:
 
 ```swift
