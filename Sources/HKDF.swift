@@ -1,9 +1,25 @@
 import Foundation
 import Cryptor
 
-public func deriveKey(algorithm: HMAC.Algorithm, seed: Data, info: Data, salt: Data, count: Int) -> Data {
+/// Derive strong key material from the given (weak) input key material.
+///
+/// - Parameters:
+///   - algorithm: hash function, defaults to SHA-256
+///   - seed: input keying material (IKM)
+///   - info: (optional) optional context and application specific information
+///   - salt: (optional) seed, a non-secret random value
+///   - count: desired output key size
+/// - Returns: output keying material (OKM)
+public func deriveKey(
+    algorithm: HMAC.Algorithm = .sha256,
+    seed: Data,
+    info: Data? = nil,
+    salt: Data? = nil,
+    count: Int)
+    -> Data
+{
     // extract
-    let prk = HMAC(using: algorithm, key: salt).update(data: seed)!.final()
+    let prk = HMAC(using: algorithm, key: salt ?? Data()).update(data: seed)!.final()
 
     // expand
     let iterations = Int(ceil(Double(count) / Double(algorithm.digestLength())))
@@ -14,7 +30,7 @@ public func deriveKey(algorithm: HMAC.Algorithm, seed: Data, info: Data, salt: D
     for i in 1...iterations {
         mixin = HMAC(using: algorithm, key: prk)
             .update(byteArray: mixin)!
-            .update(data: info)!
+            .update(data: info ?? Data())!
             .update(byteArray: [UInt8(i)])!
             .final()
         result.append(contentsOf: mixin)
