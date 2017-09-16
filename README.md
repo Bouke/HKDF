@@ -21,6 +21,11 @@ let okm = deriveKey(algorithm: .sha256, seed: ikm, count: 32)
 
 More information can be found in the [documentation](http://boukehaarsma.nl/HKDF).
 
+## Swift Compatibility
+
+Swift 4 is required with version 3 of this package. Use version 2 if you need 
+Swift 3 compatibility.
+
 ## References:
 
 * [RFC 5869 - HMAC-based Extract-and-Expand Key Derivation Function (HKDF)][0]
