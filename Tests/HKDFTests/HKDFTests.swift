@@ -1,7 +1,22 @@
+//swiftlint:disable line_length
+
 import XCTest
 import HKDF
 
 class HKDFTests: XCTestCase {
+    static var allTests: [(String, (HKDFTests) -> () throws -> Void)] {
+        return [
+            ("test1", test1),
+            ("test2", test2),
+            ("test3", test3),
+            ("test4", test4),
+            ("test5", test5),
+            ("test6", test6),
+            ("test7", test7),
+            ("testLinuxTestSuiteIncludesAllTests", testLinuxTestSuiteIncludesAllTests)
+        ]
+    }
+
     func test1() {
         let IKM  = try! Data(hex: "0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b")
         let salt = try! Data(hex: "000102030405060708090a0b0c")
@@ -78,11 +93,16 @@ class HKDFTests: XCTestCase {
         XCTAssertEqual(OKM.hex, hkdf.hex, "Test with SHA-1, salt not provided (defaults to HashLen zero octets), zero-length info")
     }
 
-    static var allTests : [(String, (HKDFTests) -> () throws -> Void)] {
-        return [
-            ("test1", test1),
-            ("test2", test2),
-            ("test3", test3),
-        ]
+    // from: https://oleb.net/blog/2017/03/keeping-xctest-in-sync/#appendix-code-generation-with-sourcery
+    func testLinuxTestSuiteIncludesAllTests() {
+        #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+            let thisClass = type(of: self)
+            let linuxCount = thisClass.allTests.count
+            let darwinCount = Int(thisClass
+                .defaultTestSuite.testCaseCount)
+            XCTAssertEqual(linuxCount,
+                           darwinCount,
+                           "\(darwinCount - linuxCount) tests are missing from allTests")
+        #endif
     }
 }
