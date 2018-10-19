@@ -16,8 +16,7 @@ public func deriveKey(
     info: Data? = nil,
     salt: Data? = nil,
     count: Int)
-    -> Data
-{
+-> Data {
     // extract
     let prk = HMAC(using: algorithm, key: salt ?? Data()).update(data: seed)!.final()
 
@@ -27,11 +26,11 @@ public func deriveKey(
     var mixin = [UInt8]()
     var result = [UInt8]()
 
-    for i in 1...iterations {
+    for iteration in 1...iterations {
         mixin = HMAC(using: algorithm, key: prk)
             .update(byteArray: mixin)!
             .update(data: info ?? Data())!
-            .update(byteArray: [UInt8(i)])!
+            .update(byteArray: [UInt8(iteration)])!
             .final()
         result.append(contentsOf: mixin)
     }
